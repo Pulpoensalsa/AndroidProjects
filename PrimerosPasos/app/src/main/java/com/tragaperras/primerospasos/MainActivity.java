@@ -5,9 +5,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.tragaperras.primerospasos.Adaptadores.MyAdapter;
+import com.tragaperras.primerospasos.Adaptadores.RecyclerViewItemClickListener;
 import com.tragaperras.primerospasos.Adaptadores.UserModel;
 
 import java.util.ArrayList;
@@ -48,8 +51,20 @@ public class MainActivity extends AppCompatActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         listaElementos.setLayoutManager(layoutManager);
 
+        RecyclerViewItemClickListener listenerLista = new RecyclerViewItemClickListener() {
+            @Override
+            public void onClick(View v, int position) {
+
+
+                Toast.makeText(getApplicationContext(), getData().get(position).getName() , Toast.LENGTH_SHORT).show();
+
+
+            }
+        };
+
+
         // Asociamos un adapter (ver más adelante cómo definirlo)
-        mAdapter = new MyAdapter(getData());
+        mAdapter = new MyAdapter(getData() , listenerLista);
         listaElementos.setAdapter(mAdapter);
     }
 
