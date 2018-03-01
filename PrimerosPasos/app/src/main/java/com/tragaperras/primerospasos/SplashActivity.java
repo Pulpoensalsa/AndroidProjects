@@ -7,20 +7,17 @@ import android.os.Bundle;
 
 public class SplashActivity extends AppCompatActivity {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-
-
-
     }
 
 
     @Override
     protected void onResume() {
         super.onResume();
-
 
         //will care for all posts
         Handler mHandler = new Handler();
@@ -30,12 +27,18 @@ public class SplashActivity extends AppCompatActivity {
 
 
     //will launch the activity
-    private Runnable tareaDespuesDelay = new Runnable() {
+    private Runnable tareaDespuesDelay =
+            new Runnable() {
         public void run() {
+
+
             //Abrir una ventana
             Intent abrirActivity = new Intent(getApplicationContext(), ActivityLogin.class);
             startActivity(abrirActivity);
+            finish();
         }
     };
+
+
 
 }
